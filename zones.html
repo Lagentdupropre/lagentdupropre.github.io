@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Zones d&#x27;intervention — L&#x27;Agent du Propre</title>
+<meta name="description" content="Zones d&#x27;intervention de L&#x27;Agent du Propre en Haute-Savoie : Annemasse, Genevois et alentours.">
+<link rel="icon" href="mark.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;1,700;1,800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-page="zones.html">
+<div id="loader" role="status" aria-label="Chargement du site"><div class="in">
+<svg class="lw" viewBox="0 0 400 300" aria-hidden="true">
+ <defs>
+  <linearGradient id="lg-glass" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f3f9fc"/><stop offset=".55" stop-color="#d9ebf4"/><stop offset="1" stop-color="#b7d6e6"/></linearGradient>
+  <linearGradient id="lg-frame" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1b3f6b"/><stop offset="1" stop-color="#0a2444"/></linearGradient>
+  <linearGradient id="lg-dirt" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#a9ae9b"/><stop offset="1" stop-color="#7f8673"/></linearGradient>
+  <filter id="lg-grime" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency=".035 .09" numOctaves="3" seed="7"/><feColorMatrix values="0 0 0 0 .3  0 0 0 0 .31  0 0 0 0 .25  0 0 0 1.6 -.55"/><feComposite in2="SourceGraphic" operator="in"/></filter>
+  <clipPath id="lg-pane"><rect x="34" y="34" width="332" height="232" rx="6"/></clipPath>
+  <mask id="lg-mask" maskUnits="userSpaceOnUse" x="0" y="0" width="400" height="300"><rect width="400" height="300" fill="#fff"/><path id="lg-path" d="M34 62 H366 V112 H34 V162 H366 V212 H34 V250 H366" fill="none" stroke="#000" stroke-width="62" stroke-linecap="butt" stroke-linejoin="miter"/></mask>
+ </defs>
+ <rect x="18" y="18" width="364" height="264" rx="18" fill="url(#lg-frame)"/>
+ <rect x="26" y="26" width="348" height="248" rx="12" fill="#0d2c52"/>
+ <g clip-path="url(#lg-pane)">
+  <rect x="34" y="34" width="332" height="232" fill="url(#lg-glass)"/>
+  <path d="M60 34 L150 34 L60 140Z M175 34 L205 34 L80 266 L50 266Z" fill="#fff" opacity=".45"/>
+  <g mask="url(#lg-mask)">
+   <rect x="34" y="34" width="332" height="232" fill="url(#lg-dirt)" opacity=".94"/>
+   <rect x="34" y="34" width="332" height="232" fill="#000" filter="url(#lg-grime)" opacity="1"/>
+   <g fill="#5f6655" opacity=".7"><path d="M90 120 q4 40 2 70 q-3 6 -6 0 q-2 -30 4 -70z"/><path d="M230 90 q3 30 1 60 q-3 5 -5 0 q-1 -30 4 -60z"/><path d="M320 140 q3 34 1 64 q-3 5 -5 0 q-1 -30 4 -64z"/></g>
+  </g>
+  <g id="lg-spark" opacity="0"><use href="#star" x="96" y="70" width="34" height="34"/><use href="#star" x="276" y="150" width="26" height="26"/><use href="#star" x="180" y="208" width="18" height="18"/></g>
+ </g>
+ <rect x="34" y="34" width="332" height="232" rx="6" fill="none" stroke="#fff" stroke-opacity=".35" stroke-width="2"/>
+ <g id="lg-sq" transform="translate(44 62)">
+  <path d="M6 4 L58 74" stroke="#0a2444" stroke-width="10" stroke-linecap="round"/>
+  <path d="M6 4 L58 74" stroke="#1b3f6b" stroke-width="4" stroke-linecap="round" opacity=".8"/>
+  <rect x="50" y="64" width="20" height="24" rx="6" transform="rotate(-36 60 76)" fill="#7cba1c"/>
+  <rect x="-7" y="-32" width="14" height="64" rx="4" fill="#0a2444"/>
+  <rect x="-3" y="-34" width="8" height="68" rx="3" fill="#7cba1c"/>
+  <rect x="-1" y="-30" width="2" height="60" fill="#fff" opacity=".5"/>
+ </g>
+</svg>
+<p class="lp"><b id="lpct">0</b><span> %</span></p><p class="lt" id="ltxt">Nettoyage en cours…</p>
+</div></div>
+<script>{const el=document.getElementById('loader');const prev=/claude/.test(location.hostname);const home=document.body.dataset.page==='index.html';
+let seen=false;try{seen=sessionStorage.getItem('adp-loader')==='1';if(!prev)sessionStorage.setItem('adp-loader','1')}catch(e){}
+if(!home||(!prev&&seen)){el.remove()}else{const path=document.getElementById('lg-path'),sq=document.getElementById('lg-sq'),pc=document.getElementById('lpct'),tx=document.getElementById('ltxt'),sp=document.getElementById('lg-spark');
+const L=path.getTotalLength();path.style.strokeDasharray=L;path.style.strokeDashoffset=L;
+const t0=performance.now(),MIN=prev?3400:2600,MAX=7000;let loaded=document.readyState==='complete';addEventListener('load',()=>loaded=true);
+const ease=k=>k<.5?2*k*k:1-((-2*k+2)**2)/2;
+const draw=v=>{const q=v/100,pt=path.getPointAtLength(L*q);path.style.strokeDashoffset=L*(1-q);sq.setAttribute('transform',`translate(${Math.min(Math.max(pt.x,44),356)} ${pt.y})${pt.y>150?' scale(1 -1)':''}`);pc.textContent=Math.round(v)};
+const tick=()=>{const e=performance.now()-t0;let k=Math.min(e/MIN,1);if(!loaded)k=Math.min(k,.92);const v=ease(k)*100;draw(v);
+if((k>=1&&loaded)||e>MAX){draw(100);tx.textContent='Impeccable !';sp.style.transition='opacity .4s';sp.style.opacity=1;sq.style.transition='opacity .3s';sq.style.opacity=0;setTimeout(()=>{el.classList.add('hide');setTimeout(()=>el.remove(),600)},700)}else requestAnimationFrame(tick)};requestAnimationFrame(tick)}}</script>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+ <symbol id="star" viewBox="0 0 20 20"><path d="M10 0C11 7 13 9 20 10 13 11 11 13 10 20 9 13 7 11 0 10 7 9 9 7 10 0Z" fill="#7cba1c"/></symbol>
+ <symbol id="phone" viewBox="0 0 24 24"><path fill="currentColor" d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1z"/></symbol>
+ <symbol id="check" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="#7cba1c"/><path d="m7 12.5 3.2 3.2L17 9" stroke="#0a2444" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+</defs></svg>
+<div class="top"><div class="wrap">
+ <span>Nettoyage professionnel en Haute-Savoie (74)</span>
+ <span><a href="tel:+33689374741">06 89 37 47 41</a><span class="mail"> · <a href="mailto:adp.74@hotmail.com">adp.74@hotmail.com</a></span></span>
+</div></div>
+<header>
+ <div class="wrap nav">
+  <a class="logo" href="index.html" aria-label="L'Agent du Propre, accueil"><img src="logo-h.png" alt="L'Agent du Propre" width="460" height="100"></a>
+  <nav id="nav" aria-label="Navigation principale"><a href="index.html">Accueil</a><a href="a-propos.html">À propos</a><a href="services.html">Nos services</a><a href="zones.html" aria-current=page>Zones</a><a href="devis.html">Devis & contact</a></nav>
+  <a class="btn" href="tel:+33689374741"><svg><use href="#phone"/></svg>06 89 37 47 41</a>
+  <button class="menu" id="menu" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="nav"><svg viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></button>
+ </div>
+</header>
+<main>
+<section class="phead">
+ <div class="bubbles" data-bubbles="10"></div>
+ <div class="wrap">
+  <div class="txt"><p class="crumbs"><a href="index.html">Accueil</a> › Zones</p><h1>Nos zones <span class="g">d’intervention</span></h1><p class="lead">Basés en Haute-Savoie, nous intervenons dans le Genevois et ses environs.</p></div>
+  <div class="mk" aria-hidden="true"><img src="mark-white.png" alt="" width="330" height="200"></div>
+ </div>
+</section>
+<section class="band">
+ <div class="wrap zgrid">
+  <div>
+   <p class="kicker">Cliquez sur votre commune</p>
+   <h2>Où intervenons-nous ?</h2>
+   <p class="lead" style="margin:12px 0 26px">Sélectionnez votre commune pour demander un devis directement.</p>
+   <ul class="towns"><li><a href="devis.html#ville-annemasse">Annemasse</a></li><li><a href="devis.html#ville-ambilly">Ambilly</a></li><li><a href="devis.html#ville-gaillard">Gaillard</a></li><li><a href="devis.html#ville-ville-la-grand">Ville-la-Grand</a></li><li><a href="devis.html#ville-vetraz-monthoux">Vétraz-Monthoux</a></li><li><a href="devis.html#ville-etrembieres">Étrembières</a></li><li><a href="devis.html#ville-reignier-esery">Reignier-Ésery</a></li><li><a href="devis.html#ville-bonne">Bonne</a></li><li><a href="devis.html#ville-collonges-sous-saleve">Collonges-sous-Salève</a></li><li><a href="devis.html#ville-saint-julien-en-genevois">Saint-Julien-en-Genevois</a></li><li><a href="devis.html#ville-thonon-les-bains">Thonon-les-Bains</a></li><li><a href="devis.html#ville-annecy">Annecy</a></li></ul>
+   <p class="note">Liste de communes provisoire, à ajuster selon ta zone réelle.</p>
+  </div>
+  <aside class="zside">
+   <h3>Votre commune n’est pas dans la liste ?</h3>
+   <p>Appelez-nous, on trouve une solution. Nous nous déplaçons régulièrement au-delà de ces communes.</p>
+   <a class="btn" href="tel:+33689374741"><svg><use href="#phone"/></svg>06 89 37 47 41</a>
+  </aside>
+ </div>
+</section>
+<section class="ctaband"><div class="wrap">
+ <div><h2>Un devis ? C’est gratuit !</h2><p>Réponse rapide, sans engagement.</p></div>
+ <a class="btn navy" href="devis.html">Demander mon devis</a>
+</div></section>
+</main>
+<footer>
+ <div class="wrap">
+  <div><img class="fl" src="mark-white.png" alt="" width="330" height="200"><p>L'Agent du Propre<br>Nettoyage professionnel en Haute-Savoie (74)</p></div>
+  <div><h3>Pages</h3><ul><li><a href="index.html">Accueil</a></li><li><a href="a-propos.html">À propos</a></li><li><a href="services.html">Nos services</a></li><li><a href="zones.html">Zones</a></li><li><a href="devis.html">Devis & contact</a></li></ul></div>
+  <div><h3>Contact</h3><ul><li><a href="tel:+33689374741">06 89 37 47 41</a></li><li><a href="mailto:adp.74@hotmail.com">adp.74@hotmail.com</a></li><li>Haute-Savoie (74)</li></ul></div>
+  <div class="legal"><span>© <span id="y">2026</span> L'Agent du Propre — SASU au capital de 500 € — RCS Thonon-les-Bains 132 996 240</span><a href="mentions-legales.html">Mentions légales</a></div>
+ </div>
+</footer>
+<div class="bar"><a class="btn" href="devis.html">Devis en ligne</a><a class="btn line" href="tel:+33689374741"><svg><use href="#phone"/></svg>06 89 37 47 41</a></div>
+<div class="callbox" id="callbox" role="dialog" aria-modal="true" aria-labelledby="cbt" hidden>
+ <div class="cbin"><button class="cbx" id="cbx" aria-label="Fermer">×</button>
+  <p class="kicker" id="cbt">Appelez-nous</p>
+  <a class="cbnum" href="tel:+33689374741">06 89 37 47 41</a>
+  <p class="cbtxt" id="cbtxt">Composez ce numéro depuis votre téléphone.</p>
+  <div class="cta"><button class="btn" id="cbcopy" type="button">Copier le numéro</button><a class="btn navy" href="devis.html">Demander un devis</a></div>
+ </div>
+</div>
+<script src="site.js"></script>
+</body>
+</html>
