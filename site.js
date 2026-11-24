@@ -19,6 +19,7 @@
   f.addEventListener('submit',e=>{
    msg.className='';
    if(!v('nom')||!v('tel')){e.preventDefault();msg.className='err';msg.textContent='Merci d’indiquer au moins votre nom et votre téléphone.';return}
+   $('#prest').value=$$('.checks input:checked').map(c=>c.value).join(', ')||'non précisé';
    if(live){msg.textContent='Envoi en cours…';return} // le formulaire part directement par email
    e.preventDefault();
    msg.textContent='Aperçu : ici le formulaire ne peut pas partir. Une fois le site en ligne, la demande arrivera directement par email à adp.74@hotmail.com.';

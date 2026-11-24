@@ -88,13 +88,17 @@ if((k>=1&&loaded)||e>MAX){draw(100);tx.textContent='Impeccable !';sp.style.trans
    <div class="coord"><small>Par téléphone ou WhatsApp</small><a href="tel:+33689374741">06 89 37 47 41</a></div>
    <div class="coord"><small>Par email</small><a href="mailto:adp.74@hotmail.com">adp.74@hotmail.com</a></div>
   </div>
-  <form id="f" name="devis" method="POST" action="/merci.html" data-netlify="true" netlify-honeypot="societe-web">
-   <input type="hidden" name="form-name" value="devis">
-   <p class="hp"><label>Ne pas remplir<input name="societe-web" tabindex="-1" autocomplete="off"></label></p>
+  <form id="f" name="devis" method="POST" action="https://api.web3forms.com/submit">
+   <input type="hidden" name="access_key" value="30da904f-33cc-42b9-9380-e98dea509c71">
+   <input type="hidden" name="subject" value="Nouvelle demande de devis — L'Agent du Propre">
+   <input type="hidden" name="from_name" value="Site L'Agent du Propre">
+   <input type="hidden" name="redirect" value="https://lagentdupropre.fr/merci.html">
+   <input type="hidden" name="prestations" id="prest" value="">
+   <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" style="display:none">
    <div class="row"><label>Nom et prénom *<input id="nom" name="nom" autocomplete="name" required></label><label>Téléphone *<input id="tel" name="telephone" type="tel" autocomplete="tel" required></label></div>
    <div class="row"><label>Email<input id="email" name="email" type="email" autocomplete="email"></label><label>Commune<input id="ville" name="commune" autocomplete="address-level2" list="villes"></label></div>
    <datalist id="villes"><option value="Annemasse"><option value="Ambilly"><option value="Gaillard"><option value="Ville-la-Grand"><option value="Vétraz-Monthoux"><option value="Étrembières"><option value="Reignier-Ésery"><option value="Bonne"><option value="Collonges-sous-Salève"><option value="Saint-Julien-en-Genevois"><option value="Thonon-les-Bains"><option value="Annecy"></datalist>
-   <fieldset><legend>Prestations souhaitées</legend><div class="checks"><label><input type="checkbox" name="prestations[]" value="Nettoyage de bureaux" id="c-bureaux">Nettoyage de bureaux</label><label><input type="checkbox" name="prestations[]" value="Locaux commerciaux" id="c-locaux-commerciaux">Locaux commerciaux</label><label><input type="checkbox" name="prestations[]" value="Fin de chantier" id="c-fin-de-chantier">Fin de chantier</label><label><input type="checkbox" name="prestations[]" value="Fin de bail" id="c-fin-de-bail">Fin de bail</label><label><input type="checkbox" name="prestations[]" value="Vitres et baies vitrées" id="c-vitres">Vitres et baies vitrées</label><label><input type="checkbox" name="prestations[]" value="Airbnb et locations" id="c-airbnb">Airbnb et locations</label><label><input type="checkbox" name="prestations[]" value="Ménage à domicile" id="c-domicile">Ménage à domicile</label><label><input type="checkbox" name="prestations[]" value="Terrasses et extérieurs" id="c-terrasses">Terrasses et extérieurs</label></div></fieldset>
+   <fieldset><legend>Prestations souhaitées</legend><div class="checks"><label><input type="checkbox" value="Nettoyage de bureaux" id="c-bureaux">Nettoyage de bureaux</label><label><input type="checkbox" value="Locaux commerciaux" id="c-locaux-commerciaux">Locaux commerciaux</label><label><input type="checkbox" value="Fin de chantier" id="c-fin-de-chantier">Fin de chantier</label><label><input type="checkbox" value="Fin de bail" id="c-fin-de-bail">Fin de bail</label><label><input type="checkbox" value="Vitres et baies vitrées" id="c-vitres">Vitres et baies vitrées</label><label><input type="checkbox" value="Airbnb et locations" id="c-airbnb">Airbnb et locations</label><label><input type="checkbox" value="Ménage à domicile" id="c-domicile">Ménage à domicile</label><label><input type="checkbox" value="Terrasses et extérieurs" id="c-terrasses">Terrasses et extérieurs</label></div></fieldset>
    <label>Votre besoin<textarea id="besoin" name="message" placeholder="Surface, fréquence, date souhaitée…"></textarea></label>
    <button class="btn" type="submit">Envoyer ma demande</button>
    <p id="msg" role="status"></p>
