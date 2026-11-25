@@ -43,3 +43,25 @@
   cp.addEventListener('click',async()=>{try{await navigator.clipboard.writeText('06 89 37 47 41');cp.textContent='Numéro copié ✓'}catch(err){cp.textContent='06 89 37 47 41'}});
  }
 }
+{
+ const A=(window.AVIS||[]).filter(a=>a&&a.texte).sort((a,b)=>String(b.date||'').localeCompare(String(a.date||'')));
+ const esc=t=>String(t==null?'':t).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+ const stars=n=>{n=Math.max(0,Math.min(5,Math.round(+n||0)));return `<span class="st" aria-label="${n} sur 5">${'★'.repeat(n)}<i>${'★'.repeat(5-n)}</i></span>`};
+ const fdate=d=>{const x=new Date(d);return isNaN(x)?'':x.toLocaleDateString('fr-FR',{month:'long',year:'numeric'})};
+ const card=a=>`<figure class="rv"><div class="rvtop">${stars(a.note)}${a.prestation?`<span class="rvtag">${esc(a.prestation)}</span>`:''}</div><blockquote>« ${esc(a.texte)} »</blockquote><figcaption><b>${esc(a.prenom||'Client')}</b>${a.commune?` · ${esc(a.commune)}`:''}${a.date?` · ${fdate(a.date)}`:''}</figcaption></figure>`;
+ // bandeau défilant (accueil)
+ const M=document.getElementById('marq');
+ if(M&&A.length){const items=A.slice(0,12).map(a=>`<div class="mi">${stars(a.note)}<span>« ${esc(a.texte.length>140?a.texte.slice(0,137)+'…':a.texte)} »</span><b>— ${esc(a.prenom||'Client')}${a.commune?', '+esc(a.commune):''}</b></div>`).join('');
+  M.innerHTML=`<div class="mrow" style="--dur:${Math.max(30,A.slice(0,12).length*9)}s">${items}${items}</div>`;M.classList.add('on')}
+ // page avis
+ const G=document.getElementById('rgrid'),S=document.getElementById('rsum');
+ if(G){if(A.length){G.innerHTML=A.map(card).join('');const moy=A.reduce((s,a)=>s+(+a.note||0),0)/A.length;S.innerHTML=`<b>${moy.toFixed(1).replace('.',',')}</b>${stars(moy)}<span>${A.length} avis client${A.length>1?'s':''}</span>`}
+  else{S.remove();G.innerHTML=`<div class="rempty"><h3>Aucun avis pour le moment</h3><p>Soyez le premier à partager votre expérience avec L'Agent du Propre.</p><a class="btn" href="#laisser">Laisser un avis</a></div>`}}
+ // formulaire d'avis
+ const F=document.getElementById('fa');
+ if(F){const live=!/claude|localhost/.test(location.hostname)&&location.protocol.startsWith('http');const m=document.getElementById('amsg');
+  F.addEventListener('submit',e=>{m.className='';
+   if(!F.querySelector('input[name=note]:checked')||!F.aprenom.value.trim()||!F.atexte.value.trim()||!F.accord_publication.checked){e.preventDefault();m.className='err';m.textContent='Merci de donner une note, votre prénom, votre avis et d’accepter la publication.';return}
+   if(live){m.textContent='Envoi en cours…';return}
+   e.preventDefault();m.textContent='Aperçu : une fois sur le site en ligne, votre avis sera envoyé par email pour validation.'})}
+}
