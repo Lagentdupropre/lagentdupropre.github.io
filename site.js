@@ -57,11 +57,18 @@
  const G=document.getElementById('rgrid'),S=document.getElementById('rsum');
  if(G){if(A.length){G.innerHTML=A.map(card).join('');const moy=A.reduce((s,a)=>s+(+a.note||0),0)/A.length;S.innerHTML=`<b>${moy.toFixed(1).replace('.',',')}</b>${stars(moy)}<span>${A.length} avis client${A.length>1?'s':''}</span>`}
   else{S.remove();G.innerHTML=`<div class="rempty"><h3>Aucun avis pour le moment</h3><p>Soyez le premier à partager votre expérience avec L'Agent du Propre.</p><a class="btn" href="#laisser">Laisser un avis</a></div>`}}
+ // étoiles cliquables
+ const ST=document.getElementById('stars');
+ if(ST){const btns=[...ST.querySelectorAll('.star')],nt=document.getElementById('note'),lb=document.getElementById('slabel');let val=0;const words=['Cliquez sur les étoiles','Décevant','Moyen','Bien','Très bien','Excellent'];
+  const paint=(n,cls)=>btns.forEach(b=>b.classList.toggle(cls,+b.dataset.v<=n));
+  const set=n=>{val=n;paint(n,'on');btns.forEach(b=>b.setAttribute('aria-checked',+b.dataset.v===n));nt.value=n?n+' / 5':'';lb.textContent=n?n+' / 5 — '+words[n]:words[0]};
+  btns.forEach(b=>{const v=+b.dataset.v;b.addEventListener('click',()=>set(v===val?v-1:v));b.addEventListener('mouseenter',()=>paint(v,'hov'));b.addEventListener('mouseleave',()=>paint(0,'hov'))});
+  ST.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key==='ArrowUp'){e.preventDefault();set(Math.min(5,val+1));btns[Math.max(0,val-1)].focus()}if(e.key==='ArrowLeft'||e.key==='ArrowDown'){e.preventDefault();set(Math.max(0,val-1));btns[Math.max(0,val-1)].focus()}})}
  // formulaire d'avis
  const F=document.getElementById('fa');
  if(F){const live=!/claude|localhost/.test(location.hostname)&&location.protocol.startsWith('http');const m=document.getElementById('amsg');
   F.addEventListener('submit',e=>{m.className='';
-   if(!F.querySelector('input[name=note]:checked')||!F.aprenom.value.trim()||!F.atexte.value.trim()||!F.accord_publication.checked){e.preventDefault();m.className='err';m.textContent='Merci de donner une note, votre prénom, votre avis et d’accepter la publication.';return}
+   if(!document.getElementById('note').value||!F.aprenom.value.trim()||!F.atexte.value.trim()||!F.accord_publication.checked){e.preventDefault();m.className='err';m.textContent='Merci de donner une note, votre prénom, votre avis et d’accepter la publication.';return}
    if(live){m.textContent='Envoi en cours…';return}
    e.preventDefault();m.textContent='Aperçu : une fois sur le site en ligne, votre avis sera envoyé par email pour validation.'})}
 }

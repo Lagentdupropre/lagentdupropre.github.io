@@ -303,11 +303,13 @@ footer a{text-decoration:none}footer a:hover{color:#fff}
 .devis-like{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(28px,5vw,64px);align-items:start}
 .devis-like .side{display:grid;gap:16px}
 select{font:16px Montserrat,sans-serif;color:var(--ink);background:var(--paper);border:1.5px solid var(--line);border-radius:12px;padding:12px 14px;min-height:50px;width:100%}
-.stars{display:flex;flex-direction:row-reverse;justify-content:flex-end;gap:4px}
-.stars input{position:absolute;opacity:0;width:1px;height:1px}
-.stars label{font-size:38px;line-height:1;color:#d5dfc4;cursor:pointer;padding:2px;transition:color .1s}
-.stars label:hover,.stars label:hover~label,.stars input:checked~label{color:var(--green)}
-.stars input:focus-visible+label{outline:3px solid var(--green);border-radius:6px}
+.stars{display:flex;align-items:center;gap:2px;flex-wrap:wrap}
+.stars .star{appearance:none;background:none;border:0;padding:2px 3px;margin:0;width:auto;min-height:0;font-size:40px;line-height:1;color:#d5dfc4;cursor:pointer;transition:color .1s,transform .1s}
+.stars .star.on{color:var(--green)}
+.stars .star.hov{color:#a9d462}
+.stars .star:hover{transform:scale(1.12)}
+.stars .star:focus-visible{outline:3px solid var(--green);border-radius:8px}
+.slabel{margin-left:12px;font-size:14px;font-weight:600;color:var(--soft)}
 .consent{display:flex;gap:10px;align-items:flex-start;font-weight:500;font-size:14px}
 .consent input{width:20px;height:20px;min-height:0;flex:none;margin-top:2px;accent-color:var(--green-d)}
 @media(max-width:900px){.rgrid{grid-template-columns:repeat(2,minmax(0,1fr))}.devis-like{grid-template-columns:minmax(0,1fr)}}
